@@ -1,0 +1,22 @@
+{
+  "name": "react-dagis",
+  "version": "1.0.8",
+  "description": "A CLI tool for generating React projects with Redux Toolkit and React Query/Redux Saga",
+  "main": "index.js",
+  "type": "module",  
+  "bin": {
+    "react-dagiss": "./index.js"
+  },
+  "dependencies": {
+    "prompts": "^2.4.1",
+    "fs-extra": "^10.0.0",
+    "child_process": "latest",
+    "path": "latest",
+    "url": "latest"
+  },
+  "scripts": {
+    "start": "node index.js"
+  },
+  "author": "Dagmawi Yoseph",
+  "license": "MIT"
+}

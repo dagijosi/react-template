@@ -1,0 +1,90 @@
+import React, { useState } from 'react';
+import { useTodosQuery, useAddTodoMutation } from '../QueryOption';
+import { FiPlus, FiChevronLeft, FiChevronRight } from 'react-icons/fi';
+import ErrorBoundary from '../utils/ErrorBoundary';
+
+interface Todo {
+  id: number;
+  title: string;
+  completed: boolean;
+}
+
+export default function Home() {
+  const [page, setPage] = useState(1);
+  const limit = 5; // You can adjust the limit as needed
+  const { data: allTodos, isLoading} = useTodosQuery({ _page: 1, _limit: 100 }); // Fetch all todos initially
+  const { mutate: addTodo } = useAddTodoMutation();
+  const [newTodo, setNewTodo] = React.useState('');
+
+  const startIndex = (page - 1) * limit;
+  const endIndex = startIndex + limit;
+  const todos = allTodos?.slice(startIndex, endIndex);
+
+  const totalPages = Math.ceil((allTodos?.length || 0) / limit);
+
+  if (isLoading) {
+    return (
+      <div className="flex items-center justify-center h-screen">
+        <span className="text-2xl font-semibold">Loading...</span>
+      </div>
+    );
+  }
+
+
+  return (
+    <ErrorBoundary>
+      <div className="container mx-auto p-4">
+        <h2 className="text-2xl font-bold mb-4">React Query Example</h2>
+        <ul className="space-y-2">
+          {todos?.map((item: Todo) => (
+            <li key={item.id} className="bg-white shadow-md rounded-md p-3">
+              {item.title}
+            </li>
+          ))}
+        </ul>
+        <form
+          onSubmit={(e) => {
+            e.preventDefault();
+            addTodo(newTodo);
+            setNewTodo('');
+          }}
+          className="mt-4 flex items-center"
+        >
+          <input
+            type="text"
+            value={newTodo}
+            onChange={(e) => setNewTodo(e.target.value)}
+            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline mr-2"
+            placeholder="Add a todo"
+          />
+          <button
+            type="submit"
+            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline flex items-center"
+          >
+            <FiPlus className="mr-2" />
+            Add
+          </button>
+        </form>
+        <div className="mt-4 flex justify-center items-center">
+          <button
+            onClick={() => setPage(prev => Math.max(prev - 1, 1))}
+            disabled={page === 1}
+            className="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-l focus:outline-none focus:shadow-outline flex items-center"
+          >
+            <FiChevronLeft className="mr-2" />
+            Previous
+          </button>
+          <span className="mx-2">{page}</span>
+          <button
+            onClick={() => setPage(prev => prev + 1)}
+            disabled={page >= totalPages}
+            className="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-r focus:outline-none focus:shadow-outline flex items-center"
+          >
+            Next
+            <FiChevronRight className="ml-2" />
+          </button>
+        </div>
+      </div>
+    </ErrorBoundary>
+  );
+}
