@@ -13,6 +13,15 @@ const __dirname = path.dirname(__filename);
 async function main() {
   const response = await prompts([
     {
+      type:"select",
+      name: "language",
+      message: "Choose your Programing Langauge",
+      choices: [
+        { title: "TypeScript", value: "Typescript"},
+        { title: "JavaScript", value: "Javascript"}
+      ]
+    },
+    {
       type: "select",
       name: "template",
       message: "Choose your starter template",
@@ -29,7 +38,7 @@ async function main() {
     }
   ]);
 
-  const templatePath = path.join(__dirname, "templates", response.template);
+  const templatePath = path.join(__dirname, "templates", response.language, response.template);
   const destinationPath = path.join(process.cwd(), response.projectName);
 
   await copy(templatePath, destinationPath);
