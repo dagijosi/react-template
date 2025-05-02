@@ -27,6 +27,8 @@ async function main() {
       message: "Choose your starter template",
       choices: [
         { title: "React + Redux Toolkit + React Query", value: "react-query" },
+        { title: "React + React Query (no Redux)", value: "react-query-only" },
+        { title: "React + Zustand + React Query", value: "zustand-query" },
         { title: "React + Redux Toolkit + Redux Saga", value: "redux-saga" }
       ]
     },

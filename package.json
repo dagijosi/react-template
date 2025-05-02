@@ -1,11 +1,11 @@
 {
   "name": "react-dagis",
-  "version": "1.0.9",
+  "version": "1.0.10",
   "description": "A CLI tool for generating React projects with Redux Toolkit and React Query/Redux Saga",
   "main": "index.js",
   "type": "module",  
   "bin": {
-    "react-dagiss": "./index.js"
+    "react-dagis": "./index.js"
   },
   "dependencies": {
     "prompts": "^2.4.1",
