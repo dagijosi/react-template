@@ -2,13 +2,14 @@
 
 # react-dagis
 
-A simple CLI tool to generate React starter projects with **Redux Toolkit** and either **React Query** or **Redux Saga** — in just a few seconds!
+A simple CLI tool to generate React starter projects with various configurations including **Redux Toolkit**, **React Query**, **Zustand**, and **Redux Saga** — in just a few seconds! Choose between **TypeScript** and **JavaScript** for your project.
 
 ---
 
 ## ✨ Features
 - 🚀 Quickly scaffold a new React project.
-- 📦 Includes Redux Toolkit + React Query or Redux Saga.
+- 🔄 Choose between TypeScript and JavaScript.
+- 📦 Multiple template options to fit your needs.
 - ⚡ No global install needed — run directly with `npx`.
 - 🛠 Automatically installs dependencies after generation.
 
@@ -24,7 +25,7 @@ Just run it using **npx**:
 npx react-dagis
 ```
 
-Follow the prompts to select a template and name your project.
+Follow the prompts to select your language, template, and name your project.
 
 ---
 
@@ -38,10 +39,17 @@ npx react-dagis
 
 You will be prompted to:
 
-1. Choose a starter template:
-   - **React + Redux Toolkit + React Query**
-   - **React + Redux Toolkit + Redux Saga**
-2. Enter your new project name.
+1. Choose your programming language:
+   - **TypeScript** - Type-safe JavaScript with better tooling and error prevention. Recommended for larger projects.
+   - **JavaScript** - Familiar JavaScript syntax without type annotations. Simpler to start with for smaller projects.
+
+2. Choose a starter template:
+   - **React + Redux Toolkit + React Query** - Full-featured setup with global state management (Redux) and efficient data fetching (React Query). Best for complex applications.
+   - **React + React Query (no Redux)** - Lightweight setup focused on efficient data fetching. Best for simpler apps that don't need complex global state.
+   - **React + Zustand + React Query** - Modern alternative with simpler state management (Zustand) and efficient data fetching. Great balance of simplicity and power.
+   - **React + Redux Toolkit + Redux Saga** - Advanced setup for complex async workflows using Redux Saga. Ideal for apps with complex state and side effects.
+
+3. Enter your new project name.
 
 Then, `react-dagis` will:
 - Copy the selected template.
@@ -50,8 +58,14 @@ Then, `react-dagis` will:
 
 Example output:
 ```
+Choose your Programming Language
+❯ TypeScript
+  JavaScript
+
 Choose your starter template
 ❯ React + Redux Toolkit + React Query
+  React + React Query (no Redux)
+  React + Zustand + React Query
   React + Redux Toolkit + Redux Saga
 
 What's your project name? (my-app)
@@ -152,12 +166,6 @@ Built with ❤️ by [Dagmawi Yoseph](https://github.com/your-github-here).
 
 ---
 
-# End
-
----
-
----
-  
 **✅ This README is ready for you to just copy-paste into your project.**
 
----# react-template
+---
