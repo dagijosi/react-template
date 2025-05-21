@@ -26,6 +26,7 @@ async function main() {
       name: "template",
       message: "Choose your starter template",
       choices: [
+        { title: "React + TailwindCSS", value: "react", description: "A modern and sleek setup with TailwindCSS for styling. Best for projects that require a visually appealing design." },
         { title: "React + Redux Toolkit + React Query", value: "react-query", description: "Full-featured setup with global state management (Redux) and efficient data fetching (React Query). Best for complex applications." },
         { title: "React + React Query (no Redux)", value: "react-query-only", description: "Lightweight setup focused on efficient data fetching. Best for simpler apps that don't need complex global state." },
         { title: "React + Zustand + React Query", value: "zustand-query", description: "Modern alternative with simpler state management (Zustand) and efficient data fetching. Great balance of simplicity and power." },
