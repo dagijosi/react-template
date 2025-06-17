@@ -151,6 +151,39 @@ my-app/
 └── vite.config.js
 ```
 
+# 📝 Git Configuration
+
+Make sure to add a `.gitignore` file to your project with the following contents:
+
+```gitignore
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+node_modules
+dist
+dist-ssr
+*.local
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+```
+
+This will prevent unnecessary files from being tracked in your git repository.
+
 ---
 
 # 🌟 Credits
